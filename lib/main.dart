@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:hrms_project/presentation/bloc/attendance/attendance_bloc.dart';
+import 'package:hrms_project/presentation/bloc/attendance/attendance_event.dart';
+import 'package:hrms_project/presentation/bloc/leave/leave_bloc.dart';
+import 'package:hrms_project/presentation/bloc/leave/leave_event.dart';
 import 'package:hrms_project/presentation/bloc/auth/login_bloc.dart';
 import 'package:hrms_project/presentation/bloc/auth/login_event.dart';
 import 'package:hrms_project/presentation/bloc/auth/login_state.dart';
@@ -29,7 +33,12 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (_) => di.sl<AuthBloc>()..add(const AuthCheckStatusRequested()),
         ),
-
+        BlocProvider<AttendanceBloc>(
+          create: (_) => di.sl<AttendanceBloc>()..add(const LoadTodayAttendance()),
+        ),
+        BlocProvider<LeaveBloc>(
+          create: (_) => di.sl<LeaveBloc>()..add(const LoadLeaveData()),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

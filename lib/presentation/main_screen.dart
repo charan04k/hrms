@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../core/theme/app_theme.dart';
+import 'screens/dashboard/Dashboard.dart';
 
 
 class MainNavigationScreen extends StatefulWidget {
@@ -33,8 +34,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> screens = [
-
-
+      DashboardScreen(onNavigateTab: _onTabSelected),
+      const Center(child: Text('Attendance Screen')),
+      const Center(child: Text('Leaves Screen')),
+      const Center(child: Text('Profile Screen')),
     ];
 
     return Scaffold(

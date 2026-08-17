@@ -8,6 +8,8 @@ import '../../domain/repositories/auth_repository.dart';
 import '../../domain/usecase/auth/login_usecase.dart';
 import '../../domain/usecase/auth/logout_usecase.dart';
 import '../../domain/usecase/auth/check_auth_status_usecase.dart';
+import '../../presentation/bloc/attendance/attendance_bloc.dart';
+import '../../presentation/bloc/leave/leave_bloc.dart';
 import '../../presentation/bloc/auth/login_bloc.dart';
 import '../app_constants.dart';
 
@@ -23,7 +25,6 @@ Future<void> initDependencies() async {
   // 2. DataSources
   sl.registerLazySingleton<AuthLocalDataSource>(
         () => AuthLocalDataSourceImpl(
-      // sharedPreferences: sl(),
       userBox: userBox,
     ),
   );
@@ -58,6 +59,7 @@ Future<void> initDependencies() async {
     ),
   );
 
-
+  sl.registerFactory<AttendanceBloc>(() => AttendanceBloc());
+  sl.registerFactory<LeaveBloc>(() => LeaveBloc());
 
 }
