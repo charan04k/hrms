@@ -23,7 +23,7 @@ Future<void> initDependencies() async {
   // 2. DataSources
   sl.registerLazySingleton<AuthLocalDataSource>(
         () => AuthLocalDataSourceImpl(
-      sharedPreferences: sl(),
+      // sharedPreferences: sl(),
       userBox: userBox,
     ),
   );
